@@ -16,14 +16,15 @@ WORKDIR $APP_DIR
 RUN npm config set proxy $http_proxy
 RUN npm config set registry http://registry.npmjs.org
 
+RUN npm install -g pm2
 RUN npm install --production
 
 RUN npm config set proxy null
 
 # 配置环境变量
-ENV HOST 0.0.0.0
-ENV PORT 8080
+
 ENV http_proxy ''
+
 # 容器对外暴露端口号
 EXPOSE 3000
 
